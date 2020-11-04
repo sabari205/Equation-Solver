@@ -15,8 +15,6 @@ app = Flask(__name__)
 api = Api(app)
 CORS(app)
 
-reqTrack = {}
-
 image_req_args = reqparse.RequestParser()
 image_req_args.add_argument("image", type=str)
 
@@ -41,7 +39,7 @@ class Predict(Resource):
         return json.dumps({
             'Entered_equation': operation,
             'Formatted_equation': formatted_equation,
-            'solution': solution
+            'solution': str(solution)
         })
 
 api.add_resource(Predict, "/predict")
