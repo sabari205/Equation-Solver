@@ -50,6 +50,36 @@ def solver(operation):
 
 def calculate(operation):
     string,head = '', None
+    temp = string = str(operation)
+    if 'D' in string:
+        string = string.replace('D', '0')
+    if 'G' in string:
+        string = string.replace('G', '6')
+    if 'b' in string:
+        string = string.replace('b', '6')
+    if 'B' in string:
+        string = string.replace('B', '8')
+    if 'Z' in string:
+        string = string.replace('Z', '2')
+    if 'S' in string:
+        string = string.replace('S', '=')
+    if 't' in string:
+        string = string.replace('t', '+')
+    if 'f' in string:
+        string = string.replace('f', '7')
+    if 'M' in string:
+        string = string.replace('M', '-')
+    if 'W' in string:
+        string = string.replace('W', '-')
+    if '=' not in string:
+        if 'x' in string:
+            string = string.replace('x', '*')
+        if 'X' in string:
+            string = string.replace('X', '*')
+        return string, eval(string)
+        
+    operation = string
+    string = ''
     for k in operation:
         if head is None:
             head = k
@@ -66,6 +96,7 @@ def calculate(operation):
             added = '*' + k
             string += added
         
+    
     print(string)
     if '=' not in string:
         return string, solver(string)
