@@ -12,27 +12,63 @@ The repository can either be cloned or downloaded as a zip.
 
 Run `npm install` inside the project directory to install all dependencies.
 
+## Execution
+
+Both ReactJS and Flask have to be executed :
+
+```
+npm start
+cd Equation-Solver
+python -m flask run
+```
+
+## Output 
+
+### When image is written through sketchpad
+
+<p float="left" align="middle">
+   <img src="https://github.com/sabari205/Equation-solver/blob/master/images/sketchpad1.png" alt="sketchpad-1" width="500" />
+    <img src="https://github.com/sabari205/Equation-solver/blob/master/images/sketchpad2.png" alt="sketchpad-2" width="500" /> 
+</p>
+
+### When image is uploaded
+
+<p float="left" align="middle">
+   <img src="https://github.com/sabari205/Equation-solver/blob/master/images/uploaded1.png" alt="uploaded-1" width="500" />
+    <img src="https://github.com/sabari205/Equation-solver/blob/master/images/uploaded2.png" alt="uploaded-2" width="500" /> 
+</p>
+
+
 ## Overview
 
-<img src="https://github.com/sabari205/Equation-solver/blob/master/images/architecture.png" alt="Architecture" >
+<img src="https://github.com/sabari205/Equation-solver/blob/master/images/architecture.png" alt="Architecture" height = "600" width = "600">
 
-- The Frontend part has been developed using ReactJS. Here the user enters the image either by uploading or by using the sketchpad. The image is encoded to base64 format and sent to the REST-API as a POST request.
+- The **Frontend** part has been developed using `ReactJS`. Here the user enters the image either by uploading or by using the sketchpad. The image is encoded to base64 format and sent to the REST-API as a POST request.
 
-- The REST-API has been implemented using Flask. The request data is decoded and saved as an image locally and this image is sent to the backend where the equation is predicted and solved.
+- The **REST-API** has been implemented using `Flask`. The request data is decoded and saved as an image locally and this image is sent to the backend where the equation is predicted and solved.
 
-- The Backend has been implemented using Python, Tensorflow and OpenCV. The backend can be seen as two separate modules : Equation Prediction and Equation Solver.
+- The **Backend** has been implemented using `Python, Tensorflow and OpenCV`. The backend can be seen as two separate modules : Equation Prediction and Equation Solver.
     
     - OpenCV is used to perform binarization and line and character segmentation. A Tensorflow model trained using the EMNIST (Extended MNIST) dataset is used to predict each of the segmented characters and the equation generated is passed as a string to the Equation Solver.
     
     - The Equation Solver solves the mathematical equation and passes it back to the Frontend where it can be viewed.
 
+## Character Segmentation
 
-# Running the app
+The major steps include : Noise Removal, Binarization, Thresholding and Image Segmentation.
 
-### `npm start`
+The Binarized image and the segmented images can be viewed below :
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<img src="https://github.com/sabari205/Equation-solver/blob/master/images/char-segmentation.png" alt="Architecture" height = "600" width = "600">
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Solving the Equation
+
+After each of the character in the image is detected, the string containing the equation is passed to this final module which solves the equation or mathematical expression.
+
+The equation can be of two types :
+
+- A mathematical string such as ‘5+3’ or ‘66x3+2’ (String that is input to this module is of this format). This string can either be evaluated using a custom-built function or the eval( ) function in python.
+
+- A mathematical equation of any degree. The string ‘X2+5=0’ is interpreted as `X**2 + 5` since the 2 appears after the variable. Whereas `2X+5=0` is interpreted as 2*X + 5 = 0. Since prediction of even a single character leads to incorrect results/failure, simple replacements are performed on the given string to increase accuracy. These include Z -> 2, G -> 6, B -> 8 and D -> 0. The equation is solved using the SymPy library, which is a python library for symbolic computation.
+
+The 2 types of equations are distinguished by checking if the equation contains ‘=‘. If the equation contains ‘=‘, it is interpreted as the 2nd type, otherwise it is interpreted as the 1st type.
