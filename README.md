@@ -22,7 +22,7 @@ cd Equation-Solver
 python -m flask run
 ```
 
-## Output 
+## Result 
 
 ### When image is written through sketchpad
 
