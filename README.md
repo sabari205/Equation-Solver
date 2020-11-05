@@ -16,6 +16,16 @@ Run `npm install` inside the project directory to install all dependencies.
 
 <img src="https://github.com/sabari205/Equation-solver/blob/master/images/architecture.png" alt="Architecture" >
 
+- The Frontend part has been developed using ReactJS. Here the user enters the image either by uploading or by using the sketchpad. The image is encoded to base64 format and sent to the REST-API as a POST request.
+
+- The REST-API has been implemented using Flask. The request data is decoded and saved as an image locally and this image is sent to the backend where the equation is predicted and solved.
+
+- The Backend has been implemented using Python, Tensorflow and OpenCV. The backend can be seen as two separate modules : Equation Prediction and Equation Solver.
+    
+    - OpenCV is used to perform binarization and line and character segmentation. A Tensorflow model trained using the EMNIST (Extended MNIST) dataset is used to predict each of the segmented characters and the equation generated is passed as a string to the Equation Solver.
+    
+    - The Equation Solver solves the mathematical equation and passes it back to the Frontend where it can be viewed.
+
 
 # Running the app
 
