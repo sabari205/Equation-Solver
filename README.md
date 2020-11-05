@@ -76,3 +76,22 @@ The equation can be of two types :
 - A mathematical equation of any degree. The string ‘X2+5=0’ is interpreted as `X**2 + 5` since the 2 appears after the variable. Whereas `2X+5=0` is interpreted as 2*X + 5 = 0. Since prediction of even a single character leads to incorrect results/failure, simple replacements are performed on the given string to increase accuracy. These include Z -> 2, G -> 6, B -> 8 and D -> 0. The equation is solved using the SymPy library, which is a python library for symbolic computation.
 
 The 2 types of equations are distinguished by checking if the equation contains ‘=‘. If the equation contains ‘=‘, it is interpreted as the 2nd type, otherwise it is interpreted as the 1st type.
+
+## Links 
+
+[Link to the presentation](https://drive.google.com/file/d/1f7ZVFmpK5mBtrZ68hBml8bGoJ_VRc_ih/view?usp=sharing)
+
+## References 
+
+[Introduction to CNN Keras](https://www.kaggle.com/yassineghouzam/introduction-to-cnn-keras-0-997-top-6)
+
+[Character Segmentation](https://github.com/dishank-b/Character_Segmentation)
+
+[ReactJS - Getting Started](https://reactjs.org/docs/getting-started.html)
+
+[React - P5 Wrapper](https://github.com/and-who/react-p5-wrapper)
+
+[Flask Restful](https://flask-restful.readthedocs.io/)
+
+[React bootstrap](https://react-bootstrap.github.io/)
+
