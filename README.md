@@ -47,11 +47,11 @@ python -m flask run
 
 <img src="https://github.com/sabari205/Equation-solver/blob/master/images/architecture.png" alt="Architecture" height = "600" width = "600">
 
-- The **Frontend** part has been developed using `ReactJS`. Here the user enters the image either by uploading or by using the sketchpad. The image is encoded to base64 format and sent to the REST-API as a POST request.
+- The [**Frontend**](https://github.com/sabari205/Equation-Solver/tree/master/src) part has been developed using `ReactJS`. Here the user enters the image either by uploading or by using the sketchpad. The image is encoded to base64 format and sent to the REST-API as a POST request.
 
-- The **REST-API** has been implemented using `Flask`. The request data is decoded and saved as an image locally and this image is sent to the backend where the equation is predicted and solved.
+- The [**REST-API**](https://github.com/sabari205/Equation-Solver/blob/master/Equation-Solver-main/app.py) has been implemented using `Flask`. The request data is decoded and saved as an image locally and this image is sent to the backend where the equation is predicted and solved.
 
-- The **Backend** has been implemented using `Python, Tensorflow and OpenCV`. The backend can be seen as two separate modules : Equation Prediction and Equation Solver.
+- The [**Backend**](https://github.com/sabari205/Equation-Solver/tree/master/Equation-Solver-main) has been implemented using `Python, Tensorflow and OpenCV`. The backend can be seen as two separate modules : Equation Prediction and Equation Solver.
     
     - OpenCV is used to perform binarization and line and character segmentation. A Tensorflow model trained using the EMNIST (Extended MNIST) dataset is used to predict each of the segmented characters and the equation generated is passed as a string to the Equation Solver.
     
