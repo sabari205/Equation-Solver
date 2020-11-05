@@ -14,8 +14,7 @@ Run `npm install` inside the project directory to install all dependencies.
 
 ## Overview
 
-<img src="https://github.com/sabari205/Equation-solver/blob/master/images/architecture.png" alt="Architecture" 
- >
+<img src="https://github.com/sabari205/Equation-solver/blob/master/images/architecture.png" alt="Architecture" >
 
 
 # Running the app
