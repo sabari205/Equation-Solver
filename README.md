@@ -27,7 +27,7 @@ python -m flask run
 ### When image is written through sketchpad
 
 
-<p float="left" align="middle">
+<p float="left">
    <img src="https://github.com/sabari205/Equation-solver/blob/master/images/sketchpad1.jpeg" alt="sketchpad-1" width="500" />
     <img src="https://github.com/sabari205/Equation-solver/blob/master/images/sketchpad2.jpeg" alt="sketchpad-2" width="500" /> 
 </p>
@@ -37,7 +37,7 @@ python -m flask run
 ### When image is uploaded
 
 
-<p float="left" align="middle">
+<p float="left">
    <img src="https://github.com/sabari205/Equation-solver/blob/master/images/uploaded1.png" alt="uploaded-1" width="500" />
     <img src="https://github.com/sabari205/Equation-solver/blob/master/images/uploaded2.png" alt="uploaded-2" width="500" /> 
 </p>
