@@ -98,3 +98,6 @@ The 2 types of equations are distinguished by checking if the equation contains 
 [Flask Restful](https://flask-restful.readthedocs.io/)
 
 [React bootstrap](https://react-bootstrap.github.io/)
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. 
