@@ -2,7 +2,7 @@ import os
 import sys
 import cv2
 import numpy as np
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 root = os.getcwd()
 OUTPUT_DIR = os.path.join(root, 'segmented')
 
@@ -76,8 +76,10 @@ def refine_array(array_upper, array_lower):
 	for y in range(len(array_lower)-1):
 		if array_lower[y] + 5 < array_lower[y+1]:
 			lower.append(array_lower[y]+10)
-	upper.append(array_upper[-1]-10)
-	lower.append(array_lower[-1]+10)
+	if array_upper:
+		upper.append(array_upper[-1]-10)
+	if array_lower:
+		lower.append(array_lower[-1]+10)
 	return upper, lower
 
 def letter_width(contours):
@@ -88,6 +90,8 @@ def letter_width(contours):
 			x,y,w,h = cv2.boundingRect(cnt)
 			letter_width_sum += w
 			count += 1
+	if count==0:
+		return 0
 	return letter_width_sum/count
 
 
