@@ -1,6 +1,6 @@
 # Handwritten Equation solver
 
-[Link to application](https://surajsubramanian.github.io/equations-solver/)
+[Link to application](https://surajsubramanian.github.io/equations-solver/) (Not functional currently as Heroku [discontinued free product plans](https://blog.heroku.com/next-chapter))
 
 The application will be able to predict and solve handwritten mathematical equations from the given image. The system should be capable of solving expression involving arithmetic operations (addition, subtraction, multiplication, division) and solve equations of any degree (linear, quadratic, cubic and so on).
 
