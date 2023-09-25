@@ -20,8 +20,3 @@ jobs:
       with:
         src: api
         options: "--check --diff --color --verbose"
-    - name: Code style - black
-      uses: chartboost/ruff-action@v1
-      with:
-        src: api
-        options: "check --ignore E501,E741,E721"

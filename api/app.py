@@ -1,5 +1,6 @@
 import base64
-import os, json
+import os
+import json
 import shutil
 from io import BytesIO
 from starlette.responses import RedirectResponse
@@ -11,10 +12,7 @@ from main import main
 from calculator import calculate
 import uvicorn
 
-app = FastAPI(
-    title = "Equation Solver",
-    description = "Equation Solver API"
-)
+app = FastAPI(title="Equation Solver", description="Equation Solver API")
 
 # Enable CORS (Cross-Origin Resource Sharing)
 origins = ["*"]  # Replace with your front-end's URL(s)
@@ -26,10 +24,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 class ImageData(BaseModel):
     image: str
 
+
 router = APIRouter()
+
+
 @app.post("/predict")
 async def predict_equation(data: ImageData):
     print("Hey!!")
@@ -49,7 +51,7 @@ async def predict_equation(data: ImageData):
     if "segmented_characters.csv" not in os.listdir():
         raise HTTPException(
             status_code=400,
-            detail={"Entered_equation": "", "Formatted_equation": "", "solution": ""}
+            detail={"Entered_equation": "", "Formatted_equation": "", "solution": ""},
         )
 
     shutil.move("segmented_characters.csv", "internals")
@@ -60,13 +62,16 @@ async def predict_equation(data: ImageData):
     }
     return json.dumps(res)
 
+
 app.include_router(router)
+
 
 @app.get("/", include_in_schema=False)
 async def index():
     return RedirectResponse(url="/docs")
     # A welcome message to test our server
     # return {"message": "Equations Solver"}
+
 
 if __name__ == "__main__":
     host = os.getenv("API_URL", "http://localhost")
