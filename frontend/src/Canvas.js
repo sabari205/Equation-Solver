@@ -30,7 +30,7 @@ class Canvas extends Component {
     let data = {};
     data.image = img;
 
-    const apiUrl = "http://" + ("localhost" || "127.0.0.1") + ":8002";
+    const apiUrl = "http://localhost:8000";
     console.log("Sending a request to:", apiUrl);
     fetch(`${apiUrl}/predict`, {
       mode: "cors",

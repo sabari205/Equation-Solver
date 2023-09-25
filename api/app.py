@@ -68,6 +68,6 @@ async def index():
     # A welcome message to test our server
     # return {"message": "Equations Solver"}
 
-# if __name__ == "__main__":
-#     host = os.getenv("API_URL", "http://0.0.0.0")
-#     uvicorn.run(app, host=host, port=8000, debug=True)
+if __name__ == "__main__":
+    host = os.getenv("API_URL", "http://localhost")
+    uvicorn.run(app, host=host, port=8000, debug=True)

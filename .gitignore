@@ -1,5 +1,3 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 /node_modules
 /.pnp
@@ -29,3 +27,13 @@ deactivate/
 .trunk/
 .ipynb_checkpoints/
 Untitled*
+
+# temp generated files
+internals/
+segmented/
+
+# docker utils
+*dive.*
+
+# react build
+build/

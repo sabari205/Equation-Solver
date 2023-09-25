@@ -117,7 +117,7 @@ def get_letter_rect(k, contours):
 			continue
 
 		x1,y1,w1,h1 = cv2.boundingRect(cnt)
-		
+
 		if abs(x1 + w1/2 - (x + w/2)) < 50:
 			if y1 > y:
 				h = abs(y - (y1 + h1))
@@ -131,22 +131,22 @@ def get_letter_rect(k, contours):
 def letter_seg(lines_img, x_lines, i):
 	copy_img = lines_img[i].copy()
 	x_linescopy = x_lines[i].copy()
-	
+
 	letter_img = []
 	letter_k = []
-	
+
 	contours, hierarchy = cv2.findContours(copy_img,cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
 	for k in range(len(contours)):
 		cnt = contours[k]
 		if cv2.contourArea(cnt) < 50:
 			continue
-		
+
 		valid,x,y,w,h = get_letter_rect(k, contours)
 		if valid:
 			letter_k.append((x,y,w,h))
 
 	letter = sorted(letter_k, key=lambda student: student[0])
-	
+
 	word = 1
 	letter_index = 0
 	for e in range(len(letter)):
@@ -208,7 +208,6 @@ def image_segmentation(filepath):
 			lines.append((upperlines[y], lowerlines[y]))
 	else:
 		print("Unable to process the noisy image")
-		showimages()
 		k = cv2.waitKey(0)
 		while 1:
 			k = cv2.waitKey(0)

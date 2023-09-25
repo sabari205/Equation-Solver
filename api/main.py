@@ -52,7 +52,7 @@ def processor(INPUT_IMAGE):
         kernel = np.ones((2,2), np.uint8)
         dilation = cv2.erode(img, kernel, iterations = 1)
         cv2.imwrite(filename, dilation)
-        
+
     segmented_characters = 'segmented_characters.csv'
     if segmented_characters in os.listdir():
         os.remove(segmented_characters)
