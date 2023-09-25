@@ -30,15 +30,20 @@ class Canvas extends Component {
     let data = {};
     data.image = img;
 
-    fetch("http://127.0.0.1:5000/predict", {
+    const apiUrl = "http://localhost:8000";
+    console.log("Sending a request to:", apiUrl);
+    fetch(`${apiUrl}/predict`, {
+      mode: "cors",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
+      credentials: "same-origin", // Include this line
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         let data1 = JSON.parse(data);
         console.log("Success:", data1);
         this.setState({

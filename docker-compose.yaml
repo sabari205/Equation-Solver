@@ -1,0 +1,29 @@
+version: '3'
+services:
+  api:
+    build:
+      context: ./api
+    image: equation-solver-api
+    command: ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+    ports:
+      - "8000:8000"
+    networks:
+      - equation-solver
+    environment:
+      API_URL: api
+
+  frontend:
+    build:
+      context: ./frontend
+    image: equation-solver-frontend
+    command: ["serve", "-s", "build"]
+    ports:
+      - "3000:3000"
+    networks:
+      - equation-solver
+    environment:
+      API_URL: api
+
+networks:
+  equation-solver:
+    driver: bridge

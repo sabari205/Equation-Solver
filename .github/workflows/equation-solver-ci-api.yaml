@@ -1,0 +1,22 @@
+name: Equation Solver - API - CI
+on:
+ pull_request:
+  branches: [feat-docker-build]
+  paths:
+   - "api/*"
+
+concurrency:
+ group: ${{ github.workflow }}-${{ github.ref }}
+ cancel-in-progress: true
+
+jobs:
+  code-checks:
+    name: Code style and linting check
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Code style - black
+      uses: psf/black@stable
+      with:
+        src: api
+        options: "--check --diff --color --verbose"

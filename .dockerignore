@@ -33,7 +33,8 @@ internals/
 segmented/
 
 # docker utils
-*dive.*
+.dive*
 
-# react build
-build/
+# git
+.git/
+.github/
