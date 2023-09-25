@@ -1,0 +1,24 @@
+name: Equation Solver - Frontend - CI 
+description: Equation Solver - Frontend - CI - Incomplete, just the docker build, no linting or tests
+on: 
+ pull_request:
+  branches: [feat-docker-build]
+  paths:
+   - "frontend/*"
+
+concurrency: 
+ group: ${{ github.workflow }}-${{ github.ref }}
+ cancel-in-progress: true
+
+jobs:
+ docker-build:
+  name: Code style and linting check
+  runs-on: ubuntu-latest
+  steps: 
+   - uses: actions/checkout@v3
+   - name: Build image
+     uses: psf/black@stable
+     run: |
+      version=$(cat version.txt)
+      docker build \
+        -t surajsubramanian/equation-solver-frontend frontend/

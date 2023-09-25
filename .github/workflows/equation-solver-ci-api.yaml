@@ -1,0 +1,41 @@
+name: Equation Solver - API - CI
+description: Equation Solver - API - CI - Incomplete, just linting and docker build, no tests
+on: 
+ pull_request:
+  branches: [feat-docker-build]
+  paths:
+   - "api/*"
+
+concurrency: 
+ group: ${{ github.workflow }}-${{ github.ref }}
+ cancel-in-progress: true
+
+jobs:
+ code-checks:
+  name: Code style and linting check
+  runs-on: ubuntu-latest
+  steps: 
+   - uses: actions/checkout@v3
+   - name: Code style - black
+     uses: psf/black@stable
+     with:
+      src: api
+      options: "--check --diff --color --verbose"
+   - name: Code style - black
+     uses: chartboost/ruff-action@v1
+     with:
+      src: api
+      options: "check --ignore E501,E741,E721"
+
+jobs:
+ docker-build:
+  name: Code style and linting check
+  runs-on: ubuntu-latest
+  steps: 
+   - uses: actions/checkout@v3
+   - name: Build image
+     uses: psf/black@stable
+     run: |
+      version=$(cat version.txt)
+      docker build \
+        -t surajsubramanian/equation-solver-api frontend/

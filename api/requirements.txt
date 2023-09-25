@@ -1,0 +1,12 @@
+keras==2.13.1
+pandas==2.1.1
+tensorflow==2.13.0
+tensorflow-estimator==2.13.0
+numpy==1.24.3
+opencv-python>=4.2.0
+Pillow>=9.0.1
+matplotlib>=3.3.0
+sympy>=1.10
+fastapi>=0.101
+uvicorn>=0.21
+starlette>=0.27
