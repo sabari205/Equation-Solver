@@ -4,6 +4,7 @@ on:
   branches: [master]
   paths:
    - "api/*"
+   - .github/workflows/equation-solver-ci-api.yaml
 
 concurrency:
  group: ${{ github.workflow }}-${{ github.ref }}
@@ -22,7 +23,7 @@ jobs:
           options: "--check --diff --color --verbose"
 
   docker-build:
-    needs: [code-checks, generate-jobs]
+    needs: [code-checks]
     name: Build waterlevel images
     runs-on: ubuntu-latest
     steps:
