@@ -1,9 +1,10 @@
 name: Equation Solver - API - CI
 on:
  pull_request:
-  branches: [feat-docker-build]
+  branches: [master]
   paths:
    - "api/*"
+   - .github/workflows/equation-solver-ci-api.yaml
 
 concurrency:
  group: ${{ github.workflow }}-${{ github.ref }}
@@ -14,9 +15,35 @@ jobs:
     name: Code style and linting check
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Code style - black
-      uses: psf/black@stable
-      with:
-        src: api
-        options: "--check --diff --color --verbose"
+      - uses: actions/checkout@v3
+      - name: Code style - black
+        uses: psf/black@stable
+        with:
+          src: api
+          options: "--check --diff --color --verbose"
+
+  docker-build:
+    needs: [code-checks]
+    name: Build waterlevel images
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+
+      - name: Save IMAGE_TAG into environment variable
+        run: |
+          VERSION_FILE_PATH=${{ env.ROOT_PATH }}/${{ matrix.job }}/version.py
+          VERSION=$(cat api/version.txt)
+          echo "IMAGE_TAG=${{ env.ENVIRONMENT }}_v${VERSION}_${GITHUB_SHA::8}" >> $GITHUB_ENV
+
+      - name: Build image
+        id: build-image
+        run: |
+          docker build \
+            -t "equation-solver-api:$IMAGE_TAG" api/
+
+      - name: Cleanup
+        if: ${{ always() }}
+        run: docker rmi -f "equation-solver-api:$IMAGE_TAG" || true

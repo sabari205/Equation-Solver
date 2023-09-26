@@ -26,31 +26,37 @@ cd Equation-Solver
 python -m flask run
 ```
 
+## Docker setup
+
+Build and run both the Frontend and API using:
+```
+docker-compose up --build
+```
+The frontend can be viewed at http://localhost:3000 and the API can be viewed at http://localhost:8000
+
 ## Result
 
 ### When image is written through sketchpad
 
 <p float="left">
-   <img src="https://github.com/sabari205/Equation-solver/blob/master/images/sketchpad1.jpeg" alt="sketchpad-1" width="500" />
-    <img src="https://github.com/sabari205/Equation-solver/blob/master/images/sketchpad2.jpeg" alt="sketchpad-2" width="500" /> 
+   <img src="./images/sketchpad1.jpeg" alt="sketchpad-1" width="500" />
+    <img src="./images/sketchpad2.jpeg" alt="sketchpad-2" width="500" />
 </p>
 
 ### When image is uploaded
 
 <p float="left">
-   <img src="https://github.com/sabari205/Equation-solver/blob/master/images/uploaded1.png" alt="uploaded-1" width="500" />
-    <img src="https://github.com/sabari205/Equation-solver/blob/master/images/uploaded2.png" alt="uploaded-2" width="500" /> 
+   <img src="./images/uploaded1.png" alt="uploaded-1" width="500" />
+    <img src="./images/uploaded2.png" alt="uploaded-2" width="500" />
 </p>
 
 ## Overview
 
-<img src="https://github.com/sabari205/Equation-solver/blob/master/images/architecture.png" alt="Architecture" height = "600" width = "600">
+<img src="./images/architecture.png" alt="Architecture" height = "600" width = "600">
 
-- The [**Frontend**](https://github.com/sabari205/Equation-Solver/tree/master/src) part has been developed using `ReactJS`. Here the user enters the image either by uploading or by using the sketchpad. The image is encoded to base64 format and sent to the REST-API as a POST request.
+- The [**Frontend**](./frontend) part has been developed using `ReactJS`. Here the user enters the image either by uploading or by using the sketchpad. The image is encoded to base64 format and sent to the REST-API as a POST request.
 
-- The [**REST-API**](https://github.com/sabari205/Equation-Solver/blob/master/Equation-Solver-main/app.py) has been implemented using `Flask`. The request data is decoded and saved as an image locally and this image is sent to the backend where the equation is predicted and solved.
-
-- The [**Backend**](https://github.com/sabari205/Equation-Solver/tree/master/Equation-Solver-main) has been implemented using `Python, Tensorflow and OpenCV`. The backend can be seen as two separate modules : Equation Prediction and Equation Solver.
+- The [**REST-API**](./api/app.py) has been implemented using `FastAPI`. The request data is decoded and saved as an image locally and this image is sent to the backend where the equation is predicted and solved. The image processing is done using Tensorflow and OpenCV. This process can be viewed as two separate modules : Equation Prediction and Equation Solver.
 
   - OpenCV is used to perform binarization and line and character segmentation. A Tensorflow model trained using the EMNIST (Extended MNIST) dataset is used to predict each of the segmented characters and the equation generated is passed as a string to the Equation Solver.
 
@@ -62,7 +68,7 @@ The major steps include : Noise Removal, Binarization, Thresholding and Image Se
 
 The Binarized image and the segmented images can be viewed below :
 
-<img src="https://github.com/sabari205/Equation-solver/blob/master/images/char-segmentation.png" alt="Architecture" height = "600" width = "600">
+<img src="./images/char-segmentation.png" alt="Architecture" height = "600" width = "600">
 
 ## Solving the Equation
 
@@ -95,4 +101,4 @@ The 2 types of equations are distinguished by checking if the equation contains 
 [React bootstrap](https://react-bootstrap.github.io/)
 
 ## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. 
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
