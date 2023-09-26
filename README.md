@@ -16,7 +16,7 @@ The repository can either be cloned or downloaded as a zip.
 
 Run `npm install` inside the project directory to install all dependencies.
 
-## Execution
+## Local setup
 
 Both ReactJS and FastAPI have to be executed :
 
