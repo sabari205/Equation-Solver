@@ -18,12 +18,18 @@ Run `npm install` inside the project directory to install all dependencies.
 
 ## Execution
 
-Both ReactJS and Flask have to be executed :
+Both ReactJS and FastAPI have to be executed :
 
+Start ReactJS using:
 ```
-npm start
-cd Equation-Solver
-python -m flask run
+cd frontend
+npm run start
+```
+
+Start FastAPI using:
+```
+cd api
+uvicorn app:app --port:8000 --reload
 ```
 
 ## Docker setup
@@ -95,8 +101,6 @@ The 2 types of equations are distinguished by checking if the equation contains 
 [ReactJS - Getting Started](https://reactjs.org/docs/getting-started.html)
 
 [React - P5 Wrapper](https://github.com/and-who/react-p5-wrapper)
-
-[Flask Restful](https://flask-restful.readthedocs.io/)
 
 [React bootstrap](https://react-bootstrap.github.io/)
 
