@@ -105,4 +105,4 @@ The 2 types of equations are distinguished by checking if the equation contains 
 [React bootstrap](https://react-bootstrap.github.io/)
 
 ## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+We enthusiastically welcome contributions, pull requests are most welcome! Your input is invaluable, and we appreciate any contributions, whether they are major changes or minor enhancements.
